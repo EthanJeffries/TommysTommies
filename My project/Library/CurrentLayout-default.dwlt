@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 631
     width: 1252
     height: 316
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 18
+  controlID: 142
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -396,23 +396,23 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 1250
-      height: 610
-    m_Scale: {x: 0.4236111, y: 0.4236111}
-    m_Translation: {x: 625, y: 305}
+      height: 589
+    m_Scale: {x: 0.40902779, y: 0.40902779}
+    m_Translation: {x: 625, y: 294.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1475.4099
+      x: -1528.0135
       y: -720
-      width: 2950.8198
+      width: 3056.027
       height: 1440
     m_MinimalGUI: 1
-  m_defaultScale: 0.4236111
+  m_defaultScale: 0.40902779
   m_LastWindowPixelSize: {x: 1250, y: 610}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -449,7 +449,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 42fbffff
+      m_ExpandedIDs: 42fbfffff645000032460000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -652,14 +652,14 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/TommyHandling
+    - Assets/EnemyHandling
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
   m_StartGridSize: 90
   m_LastFolders: []
   m_LastFoldersGridSize: 90
-  m_LastProjectPath: D:\Games\My project
+  m_LastProjectPath: D:\Games\TTGitRepo\TommysTommies\My project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -697,18 +697,18 @@ MonoBehaviour:
     m_ExpandedIDs: ffffffff00000000704600007c460000ac460000ae460000b0460000b2460000b4460000b6460000b8460000ba460000bc460000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: ShortRangeEnemyAttack
+      m_OriginalName: ShortRangeEnemyAttack
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 23502
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
