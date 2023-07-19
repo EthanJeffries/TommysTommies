@@ -89,6 +89,15 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""799047e9-a074-4415-b966-55ad15d268ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,28 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleDualWield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f586b779-41c7-4e8b-9562-aa6535f3debd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""M&K"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43f8131d-2606-4d8e-8528-f48db080c463"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -376,6 +407,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         m_Player_ShootStop = m_Player.FindAction("ShootStop", throwIfNotFound: true);
         m_Player_ToggleWeaponReady = m_Player.FindAction("ToggleWeaponReady", throwIfNotFound: true);
         m_Player_ToggleDualWield = m_Player.FindAction("ToggleDualWield", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -444,6 +476,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ShootStop;
     private readonly InputAction m_Player_ToggleWeaponReady;
     private readonly InputAction m_Player_ToggleDualWield;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @UserInput m_Wrapper;
@@ -455,6 +488,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         public InputAction @ShootStop => m_Wrapper.m_Player_ShootStop;
         public InputAction @ToggleWeaponReady => m_Wrapper.m_Player_ToggleWeaponReady;
         public InputAction @ToggleDualWield => m_Wrapper.m_Player_ToggleDualWield;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +519,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @ToggleDualWield.started += instance.OnToggleDualWield;
             @ToggleDualWield.performed += instance.OnToggleDualWield;
             @ToggleDualWield.canceled += instance.OnToggleDualWield;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -510,6 +547,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @ToggleDualWield.started -= instance.OnToggleDualWield;
             @ToggleDualWield.performed -= instance.OnToggleDualWield;
             @ToggleDualWield.canceled -= instance.OnToggleDualWield;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -554,5 +594,6 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         void OnShootStop(InputAction.CallbackContext context);
         void OnToggleWeaponReady(InputAction.CallbackContext context);
         void OnToggleDualWield(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
