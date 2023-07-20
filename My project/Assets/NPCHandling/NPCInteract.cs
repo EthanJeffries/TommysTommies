@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCInteract : MonoBehaviour, Interactable
+public class NPCInteract : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
