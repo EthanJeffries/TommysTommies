@@ -6,6 +6,8 @@ public class BulletBehavior : MonoBehaviour
 {
     private float bulletDamage;
 
+
+
     public void setBulletDamage(float bDamage)
     {
         this.bulletDamage = bDamage;

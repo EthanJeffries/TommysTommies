@@ -16,8 +16,6 @@ public class MidRangeEnemyMovement : EnemyMovement
 
     public Transform player;
 
-    public LayerMask whatIsGround, whatIsPlayer;
-
     //Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
@@ -82,10 +80,6 @@ public class MidRangeEnemyMovement : EnemyMovement
         }
     }
 
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-    }
 
     private void AttackPlayer()
     {
