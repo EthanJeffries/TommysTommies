@@ -161,19 +161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2773060f472e8f742bc9326640efd173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regularSpeed: 3
-  lungeSpeed: 10
-  lungeCoolDownSpeed: 0
-  lungeCoolDown: 2
-  meleeRange: 3
-  combatReady: 0
-  playerInMeleeRange: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
+  enemySightRange: 6
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  stoppingDistance: 0.5
 --- !u!114 &6141313528778124292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065f497cb790b6d428d3ce3030d5f233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0.5
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  enemyAttackRange: 1
+  playerInAttackRange: 0
+  attackDamage: 1
+  attackCoolDown: 2
 --- !u!195 &6630649263680182836
 NavMeshAgent:
   m_ObjectHideFlags: 0

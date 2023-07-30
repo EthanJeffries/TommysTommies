@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidRangeEnemyMovement : EnemyMovement
+public class MidRangeEnemyMovement : MonoBehaviour
 {
     //Inherits variables and methods from EnemyMovement
 
@@ -74,10 +74,10 @@ public class MidRangeEnemyMovement : EnemyMovement
 
         //walkPoint = new Vector3(transform.position.x + randomX, transform.y + randomY, transform.z);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
-        }
+        //if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        //{
+        //    walkPointSet = true;
+        //}
     }
 
 

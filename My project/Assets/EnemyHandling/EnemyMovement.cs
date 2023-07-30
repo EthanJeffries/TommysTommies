@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyMovement : MonoBehaviour
+public abstract class EnemyMovement : EnemyHandling
 {
-    //Speed Float Variables
-    [SerializeField] protected float regularSpeed, lungeSpeed, lungeCoolDownSpeed;
+    //Range values for distance to player checks
+    [SerializeField] protected float enemySightRange;
+
+    //Boolean values for distance checks
+    protected bool playerInSightRange;
     
-    //Lunge Cooldown Time
-    [SerializeField] protected float lungeCoolDown;
-
-    //Combat Checks
-    [SerializeField] protected float meleeRange;
-    [SerializeField] protected bool combatReady;
-    [SerializeField] protected bool playerInMeleeRange;
-
     //GameObject and Component Variables
     protected Rigidbody2D enemyRB;
-    protected GameObject target;
-    protected Transform targetTransform;
+    protected Transform playerTransform;
+    protected GameObject player;
+
 
     //NavMesh Stuff Variables
-    [SerializeField] protected LayerMask whatIsGround, whatIsPlayer;
+    [SerializeField] protected LayerMask whatIsGround;
     protected NavMeshAgent enemyAgent;
-    protected Vector3 enemyDestination;
 
+    //Might not need? Could be used for roaming function
+    protected Vector3 enemyDestination;
 
     //Enemy runs this upon spawning to intialize variables
     private void Awake()
@@ -34,62 +31,29 @@ public abstract class EnemyMovement : MonoBehaviour
         enemyAgent = GetComponent<NavMeshAgent>();
         enemyAgent.updateRotation = false;
         enemyAgent.updateUpAxis = false;
-        enemyAgent.speed = regularSpeed;
-        target = GameObject.FindWithTag("Player");
-        targetTransform = target.transform;
-    }
-
-    //Different State Methods
-    //Enemy Chases Player
-    protected void ChasePlayer()
-    {
-        enemyAgent.SetDestination(targetTransform.position);
-    }
-
-    //Lunge mechanics
-    private void EnemyLunge()
-    {
-        enemyAgent.speed = lungeSpeed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            StartCoroutine(LungeCoolDown());
-        }
-    }
-
-    private IEnumerator LungeCoolDown()
-    {
-        enemyAgent.speed = lungeCoolDownSpeed;
-        yield return new WaitForSeconds(lungeCoolDown);
-        enemyAgent.speed = regularSpeed;
+        player = GameObject.FindWithTag("Player");
+        playerTransform = player.transform;
     }
 
     private void Update()
     {
-        //Combat Range Checks
-        playerInMeleeRange = Physics2D.OverlapCircle(transform.position, meleeRange, whatIsPlayer);
+        playerInSightRange = CheckWithinRange(enemySightRange);
 
-        //Check for player weapon ready = combat ready
-        if (target.GetComponent<PlayerCombat>().weaponReady)
+        if (playerInSightRange)
         {
-            combatReady = true;
+            LookAtPlayer();
+            EnemyAttackMovement();
         }
-
-        if (combatReady)
-        {
-            Vector3 directionOfTarget = (targetTransform.position - transform.position).normalized;
-            float angleToTarget = Mathf.Atan2(directionOfTarget.y, directionOfTarget.x) * Mathf.Rad2Deg;
-            enemyRB.rotation = angleToTarget;
-        }
-
-        if (playerInMeleeRange)
-        {
-            EnemyLunge();
-        }
-
     }
+
+    private void LookAtPlayer()
+    {
+        Vector3 directionOfTarget = (playerTransform.position - transform.position).normalized;
+        float angleToTarget = Mathf.Atan2(directionOfTarget.y, directionOfTarget.x) * Mathf.Rad2Deg;
+        enemyRB.rotation = angleToTarget;
+    }
+
+    //This will be overwritten by the children functions
+    protected abstract void EnemyAttackMovement();
 
 }

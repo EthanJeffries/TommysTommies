@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShortRangeEnemyAttack : MonoBehaviour
+public class ShortRangeEnemyAttack : EnemyAttack
 {
     [SerializeField] private float attackDamage;
+    [SerializeField] private float attackCoolDown;
+    private bool alreadyAttacking;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void EnemyAttackPlayer()
     {
-        if (collision.gameObject.tag == "Player")
+        if (!alreadyAttacking)
         {
-            collision.gameObject.GetComponent<HealthSystem>().DealDamage(attackDamage);
+            alreadyAttacking = true;
+            Collider2D[] player = Physics2D.OverlapCircleAll(transform.position, enemyAttackRange, whatIsPlayer);
+            player[0].gameObject.GetComponent<HealthSystem>().DealDamage(attackDamage);
+            StartCoroutine(EnemyAttackCoolDown());
         }
     }
+
+    private IEnumerator EnemyAttackCoolDown()
+    {
+        yield return new WaitForSeconds(attackCoolDown);
+        alreadyAttacking=false;
+    }
+    
 }
