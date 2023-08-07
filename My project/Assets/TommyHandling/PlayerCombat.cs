@@ -77,16 +77,16 @@ public class PlayerCombat : MonoBehaviour
     private IEnumerator PlayerShoot()   //calls firebullet function based on dualwield 
     { 
         alreadyShooting = true;     //assign alreadyshooting to true so method isnt called more than once per frame
-        fireBullet(bulletPrefab, rightBulletFirePoint);
+        FireBullet(bulletPrefab, rightBulletFirePoint);
         if (dualWield)
         {
-            fireBullet(bulletPrefab, leftBulletFirePoint);
+            FireBullet(bulletPrefab, leftBulletFirePoint);
         }
         yield return new WaitForSeconds(timeBetweenShots); //time between shots to make sure there is space between each shot
         alreadyShooting = false;
     }
 
-    private void fireBullet(GameObject bPrefab, Transform bFirePoint) //Instantiates and adds velocity to bullet as well as damage value
+    private void FireBullet(GameObject bPrefab, Transform bFirePoint) //Instantiates and adds velocity to bullet as well as damage value
     {
         //Rotates the path randomly
         float accuracyVariance = Random.Range(0, bulletAccuracyThreshold);

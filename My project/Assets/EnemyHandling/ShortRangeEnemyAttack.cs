@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShortRangeEnemyAttack : EnemyAttack
 {
-    [SerializeField] private float attackDamage;
-    [SerializeField] private float attackCoolDown;
-    private bool alreadyAttacking;
 
     protected override void EnemyAttackPlayer()
     {
@@ -17,12 +14,6 @@ public class ShortRangeEnemyAttack : EnemyAttack
             player[0].gameObject.GetComponent<HealthSystem>().DealDamage(attackDamage);
             StartCoroutine(EnemyAttackCoolDown());
         }
-    }
-
-    private IEnumerator EnemyAttackCoolDown()
-    {
-        yield return new WaitForSeconds(attackCoolDown);
-        alreadyAttacking=false;
     }
     
 }

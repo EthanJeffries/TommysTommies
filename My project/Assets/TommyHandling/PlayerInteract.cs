@@ -28,8 +28,6 @@ public class PlayerInteract : MonoBehaviour
 
     private void Interact()
     {
-        Debug.Log("Trying to interact");
-
         Collider2D[] colliderItems = Physics2D.OverlapCircleAll(transform.position, interactRange);
         foreach (Collider2D item in colliderItems)
         {
